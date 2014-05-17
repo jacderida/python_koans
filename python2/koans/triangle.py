@@ -18,11 +18,20 @@
 #   about_triangle_project_2.py
 #
 def triangle(a, b, c):
-    if a == b and b == c:
+    sides = sorted([a, b, c])
+    side_a = sides[0];
+    side_b = sides[1];
+    side_c = sides[2];
+
+    if side_a <= 0:
+        raise TriangleError("A triangle cannot have a side less than or equal to 0.")
+    if side_a + side_b <= side_c:
+        raise TriangleError("The sides of the triangle must be consistent")
+    if side_a == side_c:
         return 'equilateral'
-    elif a == b or b == c or a == c:
+    elif side_a == side_b or side_b == side_c:
         return 'isosceles'
-    elif a != b and b != c and a != c:
+    else:
         return 'scalene'
 
 # Error class used in part 2.  No need to change this code.
